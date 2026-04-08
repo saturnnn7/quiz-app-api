@@ -1,0 +1,30 @@
+# Build output
+bin/
+obj/
+
+# Database file — contains real data, never commit
+*.db
+*.db-shm
+*.db-wal
+
+# User-specific Visual Studio files
+*.user
+*.suo
+.vs/
+
+# Rider IDE
+.idea/
+
+# VS Code
+.vscode/
+
+# Environment & secrets — NEVER commit
+appsettings.Development.json
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# NuGet packages — restored automatically via dotnet restore
+packages/
