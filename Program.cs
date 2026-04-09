@@ -150,7 +150,12 @@ app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
+    
+    // Only run migrations for relational databases (not InMemory used in tests)
+    if (db.Database.IsRelational())
+        db.Database.Migrate();
 }
 
 app.Run();
+
+public partial class Program { }
