@@ -12,6 +12,7 @@ public class ResultRepository : BaseRepository<ResultEntity>, IResultRepository
     public async Task<IEnumerable<ResultEntity>> GetByUserAsync(Guid userId, CancellationToken ct = default) =>
         await DbSet
             .Include(r => r.Quiz)
+            .Include(r => r.User)
             .Where(r => r.UserId == userId)
             .OrderByDescending(r => r.CompletedAt)
             .ToListAsync(ct);

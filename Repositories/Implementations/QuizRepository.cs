@@ -48,6 +48,7 @@ public class QuizRepository : BaseRepository<Quiz>, IQuizRepository
 
     public async Task<IEnumerable<Quiz>> GetByAuthorAsync(Guid authorId, CancellationToken ct = default) =>
         await DbSet
+            .Include(q => q.Author)
             .Include(q => q.Questions)
             .Where(q => q.AuthorId == authorId)
             .OrderByDescending(q => q.CreatedAt)
