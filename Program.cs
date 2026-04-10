@@ -97,6 +97,15 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod());
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Frontend", policy =>
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+
 // ===== Controllers & Swagger =====
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
