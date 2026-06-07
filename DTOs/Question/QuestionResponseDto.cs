@@ -8,5 +8,6 @@ public record QuestionResponseDto(
     string AnswerC,
     string AnswerD,
     int    CorrectAnswer,
+    int    AnswerCount,
     int    Order
 );

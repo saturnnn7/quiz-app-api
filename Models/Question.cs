@@ -10,6 +10,7 @@ public class Question
     public string AnswerC       { get; set; } = string.Empty;
     public string AnswerD       { get; set; } = string.Empty;
     public int    CorrectAnswer { get; set; } // 0=A, 1=B, 2=C, 3=D
+    public int    AnswerCount   { get; set; } = 4; // 2, 3, or 4
     public int    Order         { get; set; } = 0;
 
     // Navigation property

@@ -57,9 +57,10 @@ public class QuizService : IQuizService
                 Text          = q.Text,
                 AnswerA       = q.AnswerA,
                 AnswerB       = q.AnswerB,
-                AnswerC       = q.AnswerC,
-                AnswerD       = q.AnswerD,
+                AnswerC       = q.AnswerC ?? string.Empty,
+                AnswerD       = q.AnswerD ?? string.Empty,
                 CorrectAnswer = q.CorrectAnswer,
+                AnswerCount   = q.AnswerCount,
                 Order         = q.Order,
             }).ToList()
         };
@@ -116,11 +117,11 @@ public class QuizService : IQuizService
 
     private static QuizDetailDto MapToDetail(Quiz q) => new(
         q.Id, q.Title, q.Description, q.Author.Username,
-        q.PlayCount, q.CreatedAt, q.UpdatedAt,
+        q.Questions.Count, q.PlayCount, q.CreatedAt, q.UpdatedAt,
         q.Questions.Select(MapToQuestionResponse)
     );
 
     private static QuestionResponseDto MapToQuestionResponse(Question q) => new(
-        q.Id, q.Text, q.AnswerA, q.AnswerB, q.AnswerC, q.AnswerD, q.CorrectAnswer, q.Order
+        q.Id, q.Text, q.AnswerA, q.AnswerB, q.AnswerC, q.AnswerD, q.CorrectAnswer, q.AnswerCount, q.Order
     );
 }
